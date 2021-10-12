@@ -1,4 +1,3 @@
-import { RouteComponentProps, Router } from "@reach/router";
 import App from "App";
 import firebase from "firebase";
 import React from "react";
@@ -15,15 +14,10 @@ const config = {
 };
 firebase.initializeApp(config);
 
-const Menu = (props: RouteComponentProps) => <div>Dash</div>;
-
 ReactDOM.render(
   <React.StrictMode>
     <GlobalStyles />
-    <Router>
-      <App path="/" />
-      <Menu path="dashboard" />
-    </Router>
+    <App />
   </React.StrictMode>,
   document.getElementById("root")
 );

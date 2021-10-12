@@ -1,13 +1,8 @@
-import React from "react";
-import HomePage from "templates/home";
+import { RouteComponentProps } from "@reach/router";
+import HomePage from "templates/homePage";
 
-interface IHomePageProps {}
-
-const Home: React.FC<IHomePageProps> = ({}) => {
-  return (
-    <div style={{ height: "100%" }}>
-      <HomePage />
-    </div>
-  );
+const Home = (props: RouteComponentProps) => {
+  return <HomePage />;
 };
+
 export default Home;

@@ -5,26 +5,16 @@ export const Wrapper = styled.div`
   display: grid;
   grid-template-areas:
     "Header  Header  . "
-    ".  signin  .";
+    ".  content  .";
   padding-bottom: 10%;
 `;
 
-export const H1 = styled.h1`
+export const Heading = styled.div`
   margin: 8% 5%;
   color: white;
   grid-area: Header;
 `;
 
-export const SignInArea = styled.div`
-  grid-area: signin;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  width: 100%;
-`;
-
-export const A = styled.a`
-  color: white;
+export const Content = styled.div`
+  grid-area: content;
 `;

@@ -1,8 +1,12 @@
-import { RouteComponentProps } from "@reach/router";
+import { Router } from "@reach/router";
 import Home from "pages";
+import { Menu } from "pages/Menu";
 
-function App(props: RouteComponentProps) {
-  return <Home />;
+export default function App() {
+  return (
+    <Router>
+      <Home path="/" />
+      <Menu path="/menu" />
+    </Router>
+  );
 }
-
-export default App;

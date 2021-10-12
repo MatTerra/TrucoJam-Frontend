@@ -1,7 +1,9 @@
-import { Link, useNavigate } from "@reach/router";
+import { useNavigate } from "@reach/router";
+import { Link } from "@storybook/router";
 import firebase from "firebase";
 import React, { useCallback, useEffect } from "react";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
+import PageTemplate from "templates/pageTemplate";
 import "../../firebase-styling.global.css";
 import * as S from "./styles";
 
@@ -54,14 +56,14 @@ const HomePage: React.FC<IHomePageProps> = ({}) => {
   );
 
   return (
-    <S.Wrapper>
+    <PageTemplate>
       <S.H1>Truco Jam</S.H1>
       <S.SignInArea>
         {signInCard()}
         or
         <Link to="/menu">login anonymously</Link>
       </S.SignInArea>
-    </S.Wrapper>
+    </PageTemplate>
   );
 };
 export default HomePage;
