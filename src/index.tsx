@@ -2,7 +2,9 @@ import App from "App";
 import firebase from "firebase";
 import React from "react";
 import ReactDOM from "react-dom";
+import { ThemeProvider } from "styled-components";
 import GlobalStyles from "styles/global";
+import theme from "styles/theme";
 import reportWebVitals from "./reportWebVitals";
 
 // Configure Firebase.
@@ -15,10 +17,12 @@ const config = {
 firebase.initializeApp(config);
 
 ReactDOM.render(
-  <React.StrictMode>
-    <GlobalStyles />
-    <App />
-  </React.StrictMode>,
+  <ThemeProvider theme={theme}>
+    <React.StrictMode>
+      <GlobalStyles />
+      <App />
+    </React.StrictMode>
+  </ThemeProvider>,
   document.getElementById("root")
 );
 
