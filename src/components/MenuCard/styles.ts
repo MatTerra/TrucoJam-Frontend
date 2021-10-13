@@ -1,13 +1,12 @@
 import styled from "styled-components";
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.button`
   display: grid;
   grid-template-columns: 20% 80%;
 
   justify-items: center;
   align-items: center;
   width: 250px;
-
   background-color: white;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 
@@ -16,8 +15,8 @@ export const Wrapper = styled.div`
   :hover {
     cursor: pointer;
   }
-
   border-radius: 5px;
+  border-width: 0;
 `;
 
 export const IconContent = styled.div`
@@ -25,6 +24,8 @@ export const IconContent = styled.div`
   background-color: black;
   border-bottom-left-radius: 5px;
   border-top-left-radius: 5px;
+  width: 100%;
+
   :after {
     content: "";
     position: absolute;
