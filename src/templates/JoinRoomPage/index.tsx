@@ -1,13 +1,12 @@
 import { navigate } from "@reach/router";
-import JoinCard from "components/JoinCard";
-import { ImEnter } from "react-icons/im";
+//import JoinCard from "components/JoinCard";
 import PageTemplate from "templates/pageTemplate";
 import * as S from "./styles";
 
 export const JoinRoomPage = () => {
 
   const joinGameClick = () => {
-    const roomNumber = joinGame();
+   // const roomNumber = joinGame();
     navigate("/room/" + roomNumber);
   };
 
@@ -18,10 +17,10 @@ export const JoinRoomPage = () => {
         <h3>Let's play! Enter the room's code:</h3>
       </div>
       <S.ButtonsArea>
-        <JoinCard
+        {/*<JoinCard
           text="Enter the room's code"
           onClick={joinGameClick}
-        ></JoinCard>
+        ></JoinCard>*/}
       </S.ButtonsArea>
     </PageTemplate>
   );
