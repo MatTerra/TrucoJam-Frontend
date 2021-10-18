@@ -15,6 +15,10 @@ export const MenuPage = () => {
     navigate("/room/" + roomNumber);
   };
 
+  const JoinGameClick = () => {
+    navigate("/Join");
+  };
+
   return (
     <PageTemplate>
       <div>
@@ -27,7 +31,7 @@ export const MenuPage = () => {
           text="Host a new game"
           onClick={hostGameClick}
         ></MenuCard>
-        <MenuCard Icon={ImEnter} text="Join room"></MenuCard>
+        <MenuCard Icon={ImEnter} text="Join room" onClick={JoinGameClick}></MenuCard>
       </S.ButtonsArea>
     </PageTemplate>
   );
