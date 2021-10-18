@@ -16,7 +16,7 @@ export const MenuPage = () => {
   };
 
   const JoinGameClick = () => {
-    navigate("/Join");
+    navigate("/join");
   };
 
   return (

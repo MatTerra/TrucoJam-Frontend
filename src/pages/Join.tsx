@@ -1,4 +1,4 @@
 import { RouteComponentProps } from "@reach/router";
-import { JoinRoomPage } from "templates/JoinRoomPage";
+import { JoinPage } from "templates/JoinPage";
 
-export const Join = (props: RouteComponentProps) => <JoinRoomPage />;
+export const Join = (props: RouteComponentProps) => <JoinPage />;

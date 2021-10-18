@@ -1,9 +1,9 @@
 import { navigate } from "@reach/router";
-import JoinCard from "components/JoinCard-Test";
+import JoinCard from "components/JoinCard";
 import PageTemplate from "templates/pageTemplate";
 import * as S from "./styles";
 
-export const JoinRoomPage = () => {
+export const JoinPage = () => {
 
   const joinGameClick = () => {
    const roomNumber =  0; //joinGame();
@@ -18,7 +18,7 @@ export const JoinRoomPage = () => {
       </div>
       <S.ButtonsArea>
         <JoinCard
-          text="Enter the room's code"
+          label="Enter the room's code"
           onClick={joinGameClick}
         ></JoinCard>
       </S.ButtonsArea>
