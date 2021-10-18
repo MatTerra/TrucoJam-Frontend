@@ -6,21 +6,17 @@ export const Wrapper = styled.div<{ active: boolean }>`
   padding: 6px 6px;
   justify-items: start;
   align-items: center;
-  width: 250px;
+  width: 100%;
+  border-radius: 8px;
 
   ${({ theme, active }) => css`
-    background-color: ${theme.palette.primary.main};
+    background-color: ${active
+      ? "rgba(242, 38, 38, 0.6);"
+      : `rgba(226, 114, 114, 0.6);`};
     box-shadow: ${active
-      ? `rgba(204, 219, 232) 3px 3px 6px 0px inset,
-      rgba(255, 255, 255, 0.2) -3px -3px 6px 5px inset;'`
-      : `rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
-    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
-    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
-    `};
+      ? `0px 4px 4px rgba(0, 0, 0, 0.25);`
+      : `inset 0px 4px 4px rgba(0, 0, 0, 0.25);`};
   `}
-
-  border-radius: 5px;
-  border-width: 0;
 `;
 
 export const IconContent = styled.div`
