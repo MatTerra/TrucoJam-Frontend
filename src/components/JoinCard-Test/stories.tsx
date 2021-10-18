@@ -1,21 +1,19 @@
 import { Meta, Story } from "@storybook/react";
 import { ImEnter } from "react-icons/im";
 import { MdOutlineWidgets } from "react-icons/md";
-import MenuCard, { IMenuCardProps } from ".";
+import JoinCard, { IJoinCardProps } from ".";
 
 export default {
-  title: "MenuCard",
-  component: MenuCard,
+  title: "JoinCard",
+  component: JoinCard,
   args: {
-    text: "Host a game",
-    Icon: MdOutlineWidgets,
+    label: "Host a game",
   },
 } as Meta;
 
-export const Default: Story<IMenuCardProps> = (args) => <MenuCard {...args} />;
+export const Default: Story<IJoinCardProps> = (args) => <JoinCard {...args} />;
 
-export const Join: Story<IMenuCardProps> = (args) => <MenuCard {...args} />;
+export const Join: Story<IJoinCardProps> = (args) => <JoinCard {...args} />;
 Join.args = {
-  Icon: ImEnter,
   text: "Join room",
 };

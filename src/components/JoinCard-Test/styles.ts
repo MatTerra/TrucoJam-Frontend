@@ -19,25 +19,13 @@ export const Wrapper = styled.button`
   border-width: 0;
 `;
 
-export const IconContent = styled.div`
-  position: relative;
-  background-color: black;
-  border-bottom-left-radius: 5px;
-  border-top-left-radius: 5px;
-  width: 100%;
-
-  :after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    right: 20;
-    width: 2px;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.4);
-  }
+export const Label = styled.span`
+  font-size: 2rem;
+  font-weight: bold;
+  margin-left: 0.5em;
 `;
 
-export const Label = styled.span`
+export const Input = styled.span`
   font-size: 2rem;
   font-weight: bold;
   margin-left: 0.5em;
