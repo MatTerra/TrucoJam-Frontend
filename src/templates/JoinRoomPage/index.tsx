@@ -3,10 +3,11 @@ import { navigate } from "@reach/router";
 import PageTemplate from "templates/pageTemplate";
 import * as S from "./styles";
 
-export const JoinRoomPage = () => {
+const joinGame = () => 123456;
 
+export const JoinRoomPage = () => {
   const joinGameClick = () => {
-   // const roomNumber = joinGame();
+    const roomNumber = joinGame();
     navigate("/room/" + roomNumber);
   };
 
