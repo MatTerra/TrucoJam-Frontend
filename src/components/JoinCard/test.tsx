@@ -3,7 +3,7 @@ import JoinCard from ".";
 
 describe("<JoinCard />", () => {
   it("should render the heading", () => {
-    const { container } = render(<JoinCard text="" />);
+    const { container } = render(<JoinCard label=""/>);
 
     expect(
       screen.getByRole("heading", { name: /JoinCard/i })

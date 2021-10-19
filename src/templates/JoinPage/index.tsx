@@ -4,10 +4,10 @@ import PageTemplate from "templates/pageTemplate";
 import * as S from "./styles";
 
 export const JoinPage = () => {
+  const roomNumber = '12345';
 
   const joinGameClick = () => {
-   const roomNumber =  0; //joinGame();
-    navigate("/room");
+    navigate("/room/"+ roomNumber);
   };
 
   return (
