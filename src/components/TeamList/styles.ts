@@ -1,3 +1,7 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
-export const Wrapper = styled.main``
+export const Wrapper = styled.div`
+  > :first-child {
+    margin-bottom: 1em;
+  }
+`;

@@ -8,12 +8,12 @@ const Room = ({ id }: IRoomProps) => (
   <S.Wrapper>
     <S.Title>Room {id}</S.Title>
     <S.TeamA>
-      <span>Time A</span>
+      <S.Span>Team A</S.Span>
       <TeamList players={["1", "2"]}></TeamList>
     </S.TeamA>
     <S.Game></S.Game>
     <S.TeamB>
-      <span>Time B</span>
+      <S.Span>Team B</S.Span>
       <TeamList players={["3", "4"]}></TeamList>
     </S.TeamB>
   </S.Wrapper>
