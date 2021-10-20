@@ -1,5 +1,8 @@
-import axios from 'axios'
+import axios from "axios";
 
 export const api = axios.create({
-    baseURL: 'http://192.168.0.134:5000'
-})
+  baseURL: "https://backend-trucojam.herokuapp.com/v1/game",
+  headers: {
+    Authorization: `Bearer ${process.env.REACT_APP_API_KEY}`,
+  },
+});
