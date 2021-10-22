@@ -7,6 +7,7 @@ interface IRoomProps extends RouteComponentProps {
 
 export function Room({ roomId }: IRoomProps) {
   const nav = useNavigate();
+
   if (!roomId) {
     nav("/notFound");
     return null;

@@ -1,12 +1,16 @@
 import styled, { css } from "styled-components";
 
-export const Wrapper = styled.div<{ active: boolean }>`
+export const Wrapper = styled.div<{
+  active: boolean;
+  status: "available" | "loading" | "unavailable";
+}>`
   display: grid;
   grid-template-columns: 20% 80%;
   padding: 6px 6px;
   justify-items: start;
   align-items: center;
   width: 100%;
+  min-width: 16rem;
   border-radius: 8px;
 
   ${({ theme, active }) => css`
@@ -17,6 +21,11 @@ export const Wrapper = styled.div<{ active: boolean }>`
       ? `0px 4px 4px rgba(0, 0, 0, 0.25);`
       : `inset 0px 4px 4px rgba(0, 0, 0, 0.25);`};
   `}
+  cursor: pointer;
+  &:hover {
+    background-color: ${({ status }) =>
+      status === "available" ? "#bc3015" : "initial"};
+  }
 `;
 
 export const IconContent = styled.div`
@@ -28,7 +37,7 @@ export const IconContent = styled.div`
 export const Label = styled.span`
   font-size: 2rem;
   font-weight: bold;
-  margin-left: 0.5em;
+  margin-left: 1.5em;
   ${({ theme }) => css`
     color: ${theme.palette.primary.contrastText};
   `}

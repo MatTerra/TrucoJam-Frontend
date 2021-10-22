@@ -31,7 +31,6 @@ const HomePage: React.FC<IHomePageProps> = () => {
       .auth()
       .onAuthStateChanged(async (user) => {
         if (!!user) {
-          console.log("here");
           try {
             navigate("/menu", { replace: true });
           } catch (error) {

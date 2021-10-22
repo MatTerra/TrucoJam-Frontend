@@ -4,10 +4,11 @@ import * as S from "./styles";
 export interface IUserDisplay {
   username: string;
   userTurn: boolean;
+  status: "available" | "loading" | "unavailable";
 }
 
-const UserDisplay = ({ username, userTurn }: IUserDisplay) => (
-  <S.Wrapper active={userTurn}>
+const UserDisplay = ({ username, userTurn, status }: IUserDisplay) => (
+  <S.Wrapper active={userTurn} status={status}>
     <S.IconContent>
       <CgProfile size={"2.5em"} color="grey" />
     </S.IconContent>

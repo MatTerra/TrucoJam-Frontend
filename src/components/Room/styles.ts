@@ -2,7 +2,7 @@ import styled, { css } from "styled-components";
 
 export const Wrapper = styled.div`
   display: grid;
-
+  background-color: green;
   grid-template-areas:
     ". roomtitle ."
     "teamA game game"
