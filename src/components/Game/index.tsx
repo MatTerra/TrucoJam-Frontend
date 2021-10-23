@@ -1,9 +1,21 @@
+import { useState } from "react";
 import Ally from "components/Ally";
 import Hand from "components/Hand";
 import Rival from "components/Rival";
 import Stack from "components/CardStack";
+import Button from "components/Button";
 import * as S from "./styles";
 
+let isTruco = false;
+let message = "truco";
+const handleClick = () => {
+  if(isTruco){
+    message = "Fugir";
+  }else{
+    message = "Truco";
+    isTruco=true;
+  }
+}
 const Game = () => (
   <S.Wrapper>
     <S.Rival0>
@@ -20,7 +32,12 @@ const Game = () => (
     </S.Hand>
     <S.Stack>
       <Stack stackCount={3} />
-      </S.Stack>
+    </S.Stack>
+    <S.TrucoArea>
+      <Button color="primary" size ='medium' onClick={handleClick}>
+      {message}
+      </Button>
+    </S.TrucoArea>
   </S.Wrapper>
 );
 

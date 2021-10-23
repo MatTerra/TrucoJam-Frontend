@@ -5,7 +5,7 @@ export const Wrapper = styled.main`
   grid-template-areas:
     ". ally ."
     "rival0 cards rival1"
-    ". hand .";
+    ". hand truco";
 
   height: 100%;
   padding: 1em 3em;
@@ -36,6 +36,12 @@ export const Hand = styled.div`
 
 export const Stack = styled.div`
   grid-area: cards;
+  align-self: center;
+  text-align: center;
+`;
+
+export const TrucoArea = styled.div`
+  grid-area: truco;
   align-self: center;
   text-align: center;
 `;
