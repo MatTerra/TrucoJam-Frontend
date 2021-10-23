@@ -23,7 +23,7 @@ const TeamList = ({ roomId, players, isLoading, team }: ITeamListProps) => {
 
   const { setGame } = useRoom();
 
-  const [error, setError] = useState("");
+  const [, setError] = useState("");
   const getStatus = (playerName: string) => {
     switch (playerName) {
       case "loading":
