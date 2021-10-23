@@ -1,4 +1,5 @@
 import Ally from "components/Ally";
+import Hand from "components/Hand";
 import Rival from "components/Rival";
 import * as S from "./styles";
 
@@ -13,8 +14,12 @@ const Game = () => (
     <S.Ally>
       <Ally handCount={3} />
     </S.Ally>
-    <S.Hand>Hand</S.Hand>
-    <S.Stack>Stack</S.Stack>
+    <S.Hand>
+      <Hand handCount={3} />
+    </S.Hand>
+    <S.Stack>
+      <Hand handCount={3} />
+      </S.Stack>
   </S.Wrapper>
 );
 
