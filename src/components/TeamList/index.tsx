@@ -40,7 +40,7 @@ const TeamList = ({ roomId, players, isLoading, team }: ITeamListProps) => {
         `/${roomId}/join-team/${Team[team]}`
       );
       setGame(res.data.data.Game);
-    } catch (e) {
+    } catch (e: any) {
       setError(e);
       console.log(e);
     }

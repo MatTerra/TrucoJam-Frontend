@@ -13,7 +13,7 @@ const getToken = async () => {
   try {
     const token = firebase.auth().currentUser?.getIdToken();
     return token || "";
-  } catch (e) {
+  } catch (e: any) {
     console.log(e);
     return "";
   }
