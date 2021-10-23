@@ -37,7 +37,7 @@ export default function useRequest<T = unknown, Error = unknown>(
      * function is actually only called by `useSWR` when it isn't.
      */
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    async (...args) => {
+    async (...args): Promise<AxiosResponse<T>> => {
       try {
         const apiInstace = await api();
         return apiInstace.get<T>(request, { ...args, ...config });
