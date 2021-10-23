@@ -32,15 +32,10 @@ export default function useRequest<T = unknown, Error = unknown>(
     AxiosError<Error>
   >(
     request && JSON.stringify(request),
-    /**
-     * NOTE: Typescript thinks `request` can be `null` here, but the fetcher
-     * function is actually only called by `useSWR` when it isn't.
-     */
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    async (...args): Promise<AxiosResponse<T>> => {
+    async (): Promise<AxiosResponse<T>> => {
       try {
         const apiInstace = await api();
-        return apiInstace.get<T>(request, { ...args, ...config });
+        return apiInstace.get<T>(request);
       } catch (error) {
         console.log(error);
         throw error;
