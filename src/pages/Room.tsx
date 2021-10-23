@@ -1,4 +1,5 @@
 import { RouteComponentProps, useNavigate } from "@reach/router";
+import { RoomProvider } from "context/RoomContext";
 import { RoomPage } from "templates/RoomPage";
 
 interface IRoomProps extends RouteComponentProps {
@@ -12,5 +13,9 @@ export function Room({ roomId }: IRoomProps) {
     nav("/notFound");
     return null;
   }
-  return <RoomPage roomId={roomId} />;
+  return (
+    <RoomProvider>
+      <RoomPage roomId={roomId} />
+    </RoomProvider>
+  );
 }

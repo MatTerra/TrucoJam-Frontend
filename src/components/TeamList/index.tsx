@@ -1,6 +1,8 @@
 import UserDisplay from "components/UserDisplay";
+import { useRoom } from "context/RoomContext";
 import { useState } from "react";
 import { api } from "services/api";
+import { GameResult } from "templates/RoomPage";
 import * as S from "./styles";
 
 enum Team {
@@ -19,6 +21,8 @@ const TeamList = ({ roomId, players, isLoading, team }: ITeamListProps) => {
     (_, idx) => players?.[idx] || (isLoading ? "loading" : "available")
   );
 
+  const { setGame } = useRoom();
+
   const [error, setError] = useState("");
   const getStatus = (playerName: string) => {
     switch (playerName) {
@@ -32,8 +36,10 @@ const TeamList = ({ roomId, players, isLoading, team }: ITeamListProps) => {
 
   const onClick = async () => {
     try {
-      const res = await (await api()).put(`/${roomId}/join-team/${Team[team]}`);
-      console.log(res);
+      const res = await (await api()).put<GameResult>(
+        `/${roomId}/join-team/${Team[team]}`
+      );
+      setGame(res.data.data.Game);
     } catch (e) {
       setError(e);
       console.log(e);

@@ -10,7 +10,7 @@ const Rival = ({ handCount }: RivalProps) => (
       <img
         key={"Rival-card-" + idx}
         src="/assets/cards/card-back4.png"
-        alt="Carta ao revés imagem verde pixelada"
+        alt="Carta ao revés imagem laranja pixelada"
       ></img>
     ))}
   </S.Wrapper>

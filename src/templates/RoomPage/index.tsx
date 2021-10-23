@@ -1,4 +1,5 @@
 import Room from "components/Room";
+import { useRoom } from "context/RoomContext";
 import useRequest from "hooks/useRequest";
 import { useEffect } from "react";
 
@@ -27,16 +28,13 @@ export interface GameResult {
 
 export const RoomPage = (props: IRoomPageProps) => {
   const { data, isLoading } = useRequest<GameResult>("/" + props.roomId);
+  const { setGame } = useRoom();
 
   useEffect(() => {
-    console.log(data);
-  }, [data]);
+    setGame(data?.data.Game);
+  }, [data, setGame]);
 
   return (
-    <Room
-      id={props.roomId}
-      gameResult={data?.data.Game}
-      isLoading={isLoading || data === undefined}
-    ></Room>
+    <Room id={props.roomId} isLoading={isLoading || data === undefined}></Room>
   );
 };
