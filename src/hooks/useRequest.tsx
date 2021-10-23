@@ -40,7 +40,7 @@ export default function useRequest<T = unknown, Error = unknown>(
     async (...args) => {
       try {
         const apiInstace = await api();
-        return apiInstace.get(request, { ...args, ...config });
+        return apiInstace.get<T>(request, { ...args, ...config });
       } catch (error) {
         console.log(error);
         throw error;
