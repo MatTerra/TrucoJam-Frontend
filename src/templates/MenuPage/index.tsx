@@ -3,7 +3,6 @@ import axios from "axios";
 import Button from "components/Button";
 import Input from "components/Input";
 import MenuCard from "components/MenuCard";
-import firebase from "firebase";
 import { useState } from "react";
 import { ImEnter } from "react-icons/im";
 import { MdOutlineWidgets } from "react-icons/md";
@@ -16,14 +15,10 @@ export const MenuPage = () => {
   const [createError, setCreateError] = useState("");
 
   const [roomPassword, setRoomPassword] = useState("");
-  const tokenPromise = firebase.auth().currentUser?.getIdToken();
+
   const newGame = async () => {
     try {
-      const res = await api().post<{
-        data: GameResult;
-        success: boolean;
-        message: string;
-      }>("/", {
+      const res = await (await api()).post<GameResult>("/", {
         senha: roomPassword,
       });
       if (res.data.success) {

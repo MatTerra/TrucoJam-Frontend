@@ -1,24 +1,22 @@
 import axios from "axios";
 import firebase from "firebase";
 
-let token: string = "";
-
-export const api = () =>
+export const api = async () =>
   axios.create({
     baseURL: "https://backend-trucojam.herokuapp.com/v1/game",
     headers: {
-      Authorization: `Bearer ${getToken()}`,
+      Authorization: `Bearer ${await getToken()}`,
     },
   });
 
-const getToken = () => {
+const getToken = async () => {
   try {
-    firebase
-      .auth()
-      .currentUser?.getIdToken()
-      .then((tkn) => (token = tkn));
+    const token = firebase.auth().currentUser?.getIdToken();
+    return token || "";
   } catch (e) {
     console.log(e);
+    return "";
   }
-  return token;
 };
+
+api();

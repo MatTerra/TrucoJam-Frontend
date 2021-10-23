@@ -1,7 +1,7 @@
 import { AxiosError, AxiosRequestConfig, AxiosResponse } from "axios";
 import get from "lodash/get";
+import { api } from "services/api";
 import useSWR, { SWRConfiguration, SWRResponse } from "swr";
-import { api } from "../services/api";
 
 export type GetRequest = AxiosRequestConfig | null;
 interface Return<Data, Error>
@@ -37,10 +37,15 @@ export default function useRequest<T = unknown, Error = unknown>(
      * function is actually only called by `useSWR` when it isn't.
      */
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    (...args) =>
-      api()
-        .get<AxiosResponse<T>>(request!)
-        .then((res) => res.data),
+    async (...args) => {
+      try {
+        const apiInstace = await api();
+        return apiInstace.get(request, { ...args, ...config });
+      } catch (error) {
+        console.log(error);
+        throw error;
+      }
+    },
     {
       ...config,
     }
