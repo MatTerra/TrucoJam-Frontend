@@ -17,3 +17,11 @@ export const SignInArea = styled.div`
 export const A = styled.a`
   color: white;
 `;
+
+export const InputLine = styled.div`
+  display: flex;
+  align-items: flex-end;
+  > :first-child {
+    flex-basis: 90%;
+  }
+`;
