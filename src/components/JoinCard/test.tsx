@@ -1,12 +1,12 @@
 import { render, screen } from "@testing-library/react";
-import MenuCard from ".";
+import JoinCard from ".";
 
-describe("<MenuCard />", () => {
+describe("<JoinCard />", () => {
   it("should render the heading", () => {
-    const { container } = render(<MenuCard text="" />);
+    const { container } = render(<JoinCard label=""/>);
 
     expect(
-      screen.getByRole("heading", { name: /MenuCard/i })
+      screen.getByRole("heading", { name: /JoinCard/i })
     ).toBeInTheDocument();
 
     expect(container.firstChild).toMatchSnapshot();

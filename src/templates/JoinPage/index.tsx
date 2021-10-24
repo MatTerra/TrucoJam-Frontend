@@ -1,20 +1,13 @@
-/*import { navigate } from "@reach/router";
-import { useState } from "react";
+import { navigate } from "@reach/router";
 import JoinCard from "components/JoinCard";
 import PageTemplate from "templates/pageTemplate";
 import * as S from "./styles";
 
 export const JoinPage = () => {
-  const [roomID, setRoomID] = useState("");
-  const [roomPassword, setRoomPassword] = useState("");
-  const [correctPwd, setCorrectPwd] = useState(false);
+  const roomNumber = '12345';
 
   const joinGameClick = () => {
-    if(correctPwd){
-      navigate("/room/"+ roomID);
-    }else{
-      
-    }    
+    navigate("/room/"+ roomNumber);
   };
 
   return (
@@ -27,18 +20,8 @@ export const JoinPage = () => {
         <JoinCard
           label="Enter the room's code"
           onClick={joinGameClick}
-          id={roomID}
-          onChangeID={(e) => {
-            setRoomID(e.target.value);
-          }}
-          password={roomID}
-          onChangePassword={(e) => {
-            setRoomPassword(e.target.value);
-          }}
         ></JoinCard>
       </S.ButtonsArea>
     </PageTemplate>
   );
-};*/
-
-export {};
+};
