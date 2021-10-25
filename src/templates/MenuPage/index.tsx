@@ -70,7 +70,11 @@ export const MenuPage = () => {
           )}
           {createError && <S.Error>{createError}</S.Error>}
         </S.NewGame>
-        <MenuCard Icon={ImEnter} text="Join room"></MenuCard>
+        <MenuCard
+          Icon={ImEnter}
+          text="Join room"
+          onClick={() => navigate("/join")}
+        ></MenuCard>
       </S.ButtonsArea>
     </PageTemplate>
   );

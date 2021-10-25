@@ -22,7 +22,7 @@ const Room = ({ id, isLoading }: IRoomProps) => {
         ></TeamList>
       </S.TeamA>
       <S.Game>
-        <Game></Game>
+        <Game roomID={id}></Game>
       </S.Game>
       <S.TeamB>
         <S.Span>Team B</S.Span>

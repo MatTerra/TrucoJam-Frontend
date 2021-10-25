@@ -1,13 +1,29 @@
 import { navigate } from "@reach/router";
 import JoinCard from "components/JoinCard";
+import { useRoom } from "context/RoomContext";
+import { api } from "services/api";
 import PageTemplate from "templates/pageTemplate";
+import { GameResult } from "templates/RoomPage";
 import * as S from "./styles";
 
 export const JoinPage = () => {
-  const roomNumber = '12345';
+  const { setGame } = useRoom();
 
-  const joinGameClick = () => {
-    navigate("/room/"+ roomNumber);
+  const joinGameClick = async (roomID: string, password: string) => {
+    if (roomID.length > 0) {
+      try {
+        const res = await (await api()).put<GameResult>(`/${roomID}/join`, {
+          senha: password,
+        });
+        console.log(res.data.data.Game);
+        setGame(res.data.data.Game);
+        navigate("/room/" + roomID);
+      } catch (e: any) {
+        if (JSON.parse(JSON.stringify(e))?.status === 401) {
+          navigate("/");
+        }
+      }
+    }
   };
 
   return (

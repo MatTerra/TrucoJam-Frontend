@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Wrapper = styled.main`
   display: grid;
   grid-template-areas:
-    ". ally ."
+    ". ally start"
     "rival0 cards rival1"
     ". hand truco";
 
@@ -43,5 +43,10 @@ export const Stack = styled.div`
 export const TrucoArea = styled.div`
   grid-area: truco;
   align-self: center;
+  text-align: center;
+`;
+
+export const StartArea = styled.div`
+  grid-area: start;
   text-align: center;
 `;
