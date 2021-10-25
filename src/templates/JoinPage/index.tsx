@@ -1,14 +1,13 @@
 import { navigate } from "@reach/router";
-//import JoinCard from "components/JoinCard";
+import JoinCard from "components/JoinCard";
 import PageTemplate from "templates/pageTemplate";
 import * as S from "./styles";
 
-const joinGame = () => 123456;
+export const JoinPage = () => {
+  const roomNumber = '12345';
 
-export const JoinRoomPage = () => {
   const joinGameClick = () => {
-    const roomNumber = joinGame();
-    navigate("/room/" + roomNumber);
+    navigate("/room/"+ roomNumber);
   };
 
   return (
@@ -18,10 +17,10 @@ export const JoinRoomPage = () => {
         <h3>Let's play! Enter the room's code:</h3>
       </div>
       <S.ButtonsArea>
-        {/*<JoinCard
-          text="Enter the room's code"
+        <JoinCard
+          label="Enter the room's code"
           onClick={joinGameClick}
-        ></JoinCard>*/}
+        ></JoinCard>
       </S.ButtonsArea>
     </PageTemplate>
   );

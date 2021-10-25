@@ -2,13 +2,11 @@ import styled, { css } from "styled-components";
 
 export const Wrapper = styled.div`
   display: grid;
-
   grid-template-areas:
     ". roomtitle ."
     "teamA game game"
-    "teamB game game"
-    ". cards cards";
-
+    "teamB game game";
+  height: 100%;
   ${({ theme }) => css`
     border-radius: ${theme.borderRadius};
   `}

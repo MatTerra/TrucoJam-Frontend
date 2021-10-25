@@ -8,6 +8,7 @@ import { ImEnter } from "react-icons/im";
 import { MdOutlineWidgets } from "react-icons/md";
 import { api } from "services/api";
 import PageTemplate from "templates/pageTemplate";
+import { GameResult } from "templates/RoomPage";
 import * as S from "./styles";
 
 export const MenuPage = () => {
@@ -17,23 +18,7 @@ export const MenuPage = () => {
 
   const newGame = async () => {
     try {
-      const res = await api.post<{
-        data: {
-          Game: {
-            id_: string;
-            jogadores: string[];
-            creation_datetime: Date;
-            last_modified_datetime: Date;
-            partidas: string[];
-            pontuacao: [number, number];
-            senha: string;
-            status: 0;
-            times: [[], []];
-          };
-        };
-        success: boolean;
-        message: string;
-      }>("/", {
+      const res = await (await api()).post<GameResult>("/", {
         senha: roomPassword,
       });
       if (res.data.success) {

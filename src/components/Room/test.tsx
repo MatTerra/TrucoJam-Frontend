@@ -3,7 +3,7 @@ import Room from ".";
 
 describe("<Room />", () => {
   it("should render the heading", () => {
-    const { container } = render(<Room id="123456" />);
+    const { container } = render(<Room isLoading={false} id="123456" />);
 
     expect(screen.getByRole("heading", { name: /Room/i })).toBeInTheDocument();
 
