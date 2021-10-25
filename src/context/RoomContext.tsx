@@ -1,3 +1,4 @@
+import { Card } from "components/Game/cards";
 import React, {
   createContext,
   Dispatch,
@@ -15,14 +16,7 @@ type RoomContextType = {
   setRound: Dispatch<Round | undefined>;
   resetGame: () => void;
 };
-
-export interface Card {
-  naipe: number;
-  rodada: number | null;
-  valor: number;
-}
-
-interface Round {
+export interface Round {
   maos: [{ cartas: Card[]; jogador: string }];
   may_raise: true;
   turno: number;
