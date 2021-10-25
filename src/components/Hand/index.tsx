@@ -1,19 +1,19 @@
-import React, { MouseEventHandler } from "react";
+import { Card } from "context/RoomContext";
 import * as S from "./styles";
 
 export interface HandProps {
-  handCount: number;
-  onClick?: MouseEventHandler;
+  cards: Card[];
+  onClick?: (cardPosition: number) => void;
 }
 
-const Hand = ({ handCount, onClick }: HandProps) => (
+const Hand = ({ cards, onClick }: HandProps) => (
   <S.Wrapper>
-    {[...Array(handCount).fill(0)].map((_, idx) => (
+    {cards.map((card, idx) => (
       <S.Card
         key={"ally-card-" + idx}
         src="/assets/cards/card-back4.png"
         alt="Carta do jogador"
-        onClick={onClick}
+        onClick={() => onClick && onClick(idx)}
       ></S.Card>
     ))}
   </S.Wrapper>

@@ -90,7 +90,9 @@ const HomePage: React.FC<IHomePageProps> = () => {
                   setNickName(e.target.value);
                 }}
               ></Input>
-              <Button color="secondary">ok</Button>
+              <Button type="submit" color="secondary">
+                ok
+              </Button>
             </S.InputLine>
           ) : (
             <Button onClick={() => setShowAnonymous(true)}>

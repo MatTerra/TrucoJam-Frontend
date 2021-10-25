@@ -19,7 +19,7 @@ const getToken = async () => {
     return token;
   } catch (e: any) {
     console.log(e);
-    return "";
+    return token;
   }
 };
 
