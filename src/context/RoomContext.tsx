@@ -7,7 +7,7 @@ import React, {
   useEffect,
 } from "react";
 import { api } from "services/api";
-import { Game } from "templates/RoomPage";
+import { Game, GameResult } from "templates/RoomPage";
 
 type RoomContextType = {
   game?: Game;
@@ -22,7 +22,7 @@ export interface Round {
   may_raise: [boolean, boolean];
   turno: number;
   valor: number;
-  vencedor: string | null;
+  vencedor: number | null;
 }
 export interface RoundResult {
   data: { partida: Round };
@@ -47,6 +47,24 @@ export const RoomProvider: React.FC = ({ children }) => {
   const resetGame = useCallback(() => {
     setGame(undefined);
   }, [setGame]);
+
+  useEffect(() => {
+    const getGame = async () => {
+      try {
+        const apiInstance = await api();
+        const thisRound = await apiInstance.get<GameResult>(
+          `/${game?.id_ || 0}`
+        );
+        if (thisRound.status === 204) {
+          return;
+        }
+        setGame(thisRound.data.data.Game);
+      } catch (e) {
+        console.log(e);
+      }
+    };
+    getGame();
+  }, [round?.vencedor, game?.id_]);
 
   useEffect(() => {
     const getRound = async () => {

@@ -3,12 +3,20 @@ import styled from "styled-components";
 export const Wrapper = styled.main`
   display: grid;
   grid-template-areas:
+    ". score ."
     ". ally start"
     "rival0 cards rival1"
     ". hand truco";
 
   height: 100%;
   padding: 1em 3em;
+`;
+
+export const Score = styled.div`
+  grid-area: score;
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
 `;
 
 export const Rival0 = styled.div`
