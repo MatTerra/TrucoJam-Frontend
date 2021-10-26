@@ -18,7 +18,8 @@ export const MenuPage = () => {
 
   const newGame = async () => {
     try {
-      const res = await (await api()).post<GameResult>("/", {
+      const apiInstance = await api();
+      const res = await apiInstance.post<GameResult>("/", {
         senha: roomPassword,
       });
       if (res.data.success) {

@@ -17,8 +17,9 @@ type RoomContextType = {
   resetGame: () => void;
 };
 export interface Round {
-  maos: [{ cartas: Card[]; jogador: string }];
-  may_raise: true;
+  mao_jogador?: { cartas: Card[]; jogador: string };
+  maos: { cartas: Card[]; jogador: string }[];
+  may_raise: [boolean, boolean];
   turno: number;
   valor: number;
   vencedor: string | null;

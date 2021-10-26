@@ -1,3 +1,4 @@
+import Button from "components/Button";
 import UserDisplay from "components/UserDisplay";
 import { useRoom } from "context/RoomContext";
 import { useState } from "react";
@@ -14,9 +15,16 @@ export interface ITeamListProps {
   team: "A" | "B";
   players?: [string, string];
   isLoading: boolean;
+  current: 0 | 1 | undefined;
 }
 
-const TeamList = ({ roomId, players, isLoading, team }: ITeamListProps) => {
+const TeamList = ({
+  roomId,
+  players,
+  isLoading,
+  team,
+  current,
+}: ITeamListProps) => {
   const playersToMap = [...Array(2).fill(0)].map(
     (_, idx) => players?.[idx] || (isLoading ? "loading" : "available")
   );
@@ -46,17 +54,36 @@ const TeamList = ({ roomId, players, isLoading, team }: ITeamListProps) => {
     }
   };
 
+  const onAddBot = async () => {
+    try {
+      const res = await (await api()).put<GameResult>(
+        `/${roomId}/bot-team/${Team[team]}`
+      );
+      setGame(res.data.data.Game);
+    } catch (e: any) {
+      setError(e);
+      console.log(e);
+    }
+  };
+
   return (
     <S.Wrapper>
-      {playersToMap.map((player, idx) => (
-        <UserDisplay
-          key={player + idx}
-          username={isLoading ? "loading" : player.slice(0, 13)}
-          userTurn={false}
-          status={getStatus(player)}
-          onClick={() => onClick()}
-        ></UserDisplay>
-      ))}
+      {playersToMap.map((player, idx) => {
+        return (
+          <UserDisplay
+            key={player + idx}
+            username={isLoading ? "loading" : player.slice(0, 13)}
+            userTurn={current === idx}
+            status={getStatus(player)}
+            onClick={() => onClick()}
+          ></UserDisplay>
+        );
+      })}
+      {(players?.length || 0) < 2 && (
+        <Button fullWidth color="secondary" onClick={onAddBot}>
+          Add bot
+        </Button>
+      )}
     </S.Wrapper>
   );
 };

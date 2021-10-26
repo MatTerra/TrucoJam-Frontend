@@ -17,13 +17,13 @@ enum Value {
 
 const cardMapping = {
   [Suit.DIAMONDS]: {
-    [Value.Q]: `card-clubs-Q.png`,
-    [Value.K]: `card-clubs-K.png`,
-    [Value.J]: `card-clubs-J.png`,
-    [Value.A]: `card-clubs-1.png`,
-    [Value.TWO]: `card-clubs-2.png`,
-    [Value.THREE]: `card-clubs-3.png`,
-    [Value.MANHILHA]: `card-clubs-7.png`,
+    [Value.Q]: `card-diamonds-Q.png`,
+    [Value.K]: `card-diamonds-K.png`,
+    [Value.J]: `card-diamonds-J.png`,
+    [Value.A]: `card-diamonds-1.png`,
+    [Value.TWO]: `card-diamonds-2.png`,
+    [Value.THREE]: `card-diamonds-3.png`,
+    [Value.MANHILHA]: `card-diamonds-7.png`,
   },
   [Suit.SPADES]: {
     [Value.Q]: `card-spades-Q.png`,

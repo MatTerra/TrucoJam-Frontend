@@ -12,7 +12,7 @@ export const api = async () =>
 
 const getToken = async () => {
   try {
-    if (!token) {
+    if (token.length === 0) {
       const fbToken = await firebase.auth().currentUser?.getIdToken();
       token = fbToken || "";
     }
