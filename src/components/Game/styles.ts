@@ -17,6 +17,7 @@ export const Score = styled.div`
   display: flex;
   justify-content: space-around;
   text-align: center;
+  color: white;
 `;
 
 export const Rival0 = styled.div`

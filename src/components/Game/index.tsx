@@ -110,7 +110,7 @@ const Game = ({ roomID, mayRaise }: GameProps) => {
         <Hand cards={lastHand} onClick={onCardClick} />
       </S.Hand>
       <S.Stack>
-        <Stack stackCount={3} />
+        <Stack history={round?.maos || []} />
       </S.Stack>
       <S.StartArea>
         {game?.status === Status.ready && (
