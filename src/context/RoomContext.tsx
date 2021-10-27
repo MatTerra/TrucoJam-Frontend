@@ -64,7 +64,13 @@ export const RoomProvider: React.FC = ({ children }) => {
       }
     };
     getGame();
-  }, [round?.vencedor, game?.id_]);
+    const intervalGet = setInterval(() => {
+      getGame();
+    }, 5000);
+    return () => {
+      clearInterval(intervalGet);
+    };
+  }, [game?.id_]);
 
   useEffect(() => {
     const getRound = async () => {

@@ -1,6 +1,6 @@
 import Button from "components/Button";
 import { Card, getCard } from "components/Game/cards";
-import { useMemo, useState } from "react";
+import React, { useMemo, useState } from "react";
 import * as S from "./styles";
 
 export interface StackProps {
@@ -24,6 +24,14 @@ const Stack = ({ history }: StackProps) => {
     );
     return cardsPerPlayer;
   }, [history]);
+
+  React.useEffect(() => {
+    cardsPerRound.forEach((cards, idx) => {
+      if (cards.length === 0 && idx > 1) {
+        setSelectedRound((idx - 1) as 1 | 2);
+      }
+    });
+  }, [cardsPerRound]);
 
   return (
     <S.Wrapper>
