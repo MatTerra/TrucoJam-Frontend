@@ -24,12 +24,13 @@ export interface GameProps {
 
 const Game = ({ roomID, mayRaise }: GameProps) => {
   const { game, setGame, round, setRound } = useRoom();
-  useEffect(() => {
-    console.log(round?.mao_jogador);
-  }, [round]);
+
   const score = useMemo(() => {
     const winnerTeam = (round: Round): [number, number] => {
       if (round.vencedor) {
+        if (round.vencedor === -1) {
+          return [0, 0];
+        }
         if (round.vencedor < 2) {
           return [round.valor, 0];
         } else {
