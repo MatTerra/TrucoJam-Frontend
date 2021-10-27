@@ -7,7 +7,7 @@ export const Wrapper = styled.main`
     ". ally start"
     "rival0 cards rival1"
     ". hand truco";
-
+  grid-template-columns: minmax(0, 1fr) 475px minmax(0, 1fr);
   height: 100%;
   padding: 1em 3em;
 `;
@@ -51,7 +51,7 @@ export const Stack = styled.div`
 
 export const TrucoArea = styled.div`
   grid-area: truco;
-  align-self: center;
+  align-self: end;
   text-align: center;
 `;
 

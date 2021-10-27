@@ -29,7 +29,7 @@ const Stack = ({ history }: StackProps) => {
     <S.Wrapper>
       {history.length ? (
         <S.RoundSelect>
-          <div style={{ display: "block" }}>
+          <div style={{ display: "flex", flexDirection: "column" }}>
             <Button onClick={() => setSelectedRound(0)}>0</Button>
             <Button onClick={() => setSelectedRound(1)}>1</Button>
             <Button onClick={() => setSelectedRound(2)}>2</Button>
