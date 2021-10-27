@@ -3,7 +3,7 @@ import Button from "components/Button";
 import Stack from "components/CardStack";
 import Hand from "components/Hand";
 import Rival from "components/Rival";
-import { Round, RoundResult, useRoom } from "context/RoomContext";
+import { RoundResult, useRoom } from "context/RoomContext";
 import { useEffect, useMemo, useState } from "react";
 import { api } from "services/api";
 import { GameResult } from "templates/RoomPage";
@@ -24,31 +24,6 @@ export interface GameProps {
 
 const Game = ({ roomID, mayRaise }: GameProps) => {
   const { game, setGame, round, setRound } = useRoom();
-
-  const score = useMemo(() => {
-    const winnerTeam = (round: Round): [number, number] => {
-      if (round.vencedor) {
-        if (round.vencedor === -1) {
-          return [0, 0];
-        }
-        if (round.vencedor < 2) {
-          return [round.valor, 0];
-        } else {
-          return [0, round.valor];
-        }
-      }
-      return [0, 0];
-    };
-    return (
-      game?.partidas.reduce(
-        (prev, curr) => {
-          const roundScore = winnerTeam(curr);
-          return [prev[0] + roundScore[0], prev[1] + roundScore[1]];
-        },
-        [0, 0]
-      ) || [0, 0]
-    );
-  }, [game]);
 
   const onStart = async () => {
     if (game?.status === Status.ready) {
@@ -93,9 +68,9 @@ const Game = ({ roomID, mayRaise }: GameProps) => {
     <S.Wrapper>
       <S.Score>
         <h2>Score</h2>
-        <h2>{score[0]}</h2>
+        <h2>{game?.pontuacao[0] || 0}</h2>
         <h2>X</h2>
-        <h2>{score[1]}</h2>
+        <h2>{game?.pontuacao[1] || 0}</h2>
       </S.Score>
       <S.Rival0>
         <Rival handCount={3} />
