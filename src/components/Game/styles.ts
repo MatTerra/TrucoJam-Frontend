@@ -3,12 +3,21 @@ import styled from "styled-components";
 export const Wrapper = styled.main`
   display: grid;
   grid-template-areas:
+    ". score ."
     ". ally start"
     "rival0 cards rival1"
     ". hand truco";
-
+  grid-template-columns: minmax(0, 1fr) 475px minmax(0, 1fr);
   height: 100%;
   padding: 1em 3em;
+`;
+
+export const Score = styled.div`
+  grid-area: score;
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  color: white;
 `;
 
 export const Rival0 = styled.div`
@@ -42,7 +51,7 @@ export const Stack = styled.div`
 
 export const TrucoArea = styled.div`
   grid-area: truco;
-  align-self: center;
+  align-self: end;
   text-align: center;
 `;
 

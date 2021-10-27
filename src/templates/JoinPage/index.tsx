@@ -15,7 +15,6 @@ export const JoinPage = () => {
         const res = await (await api()).put<GameResult>(`/${roomID}/join`, {
           senha: password,
         });
-        console.log(res.data.data.Game);
         setGame(res.data.data.Game);
         navigate("/room/" + roomID);
       } catch (e: any) {

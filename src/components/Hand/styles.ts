@@ -2,6 +2,11 @@ import styled from "styled-components";
 
 export const Card = styled.img`
   align-self: center;
+  &:hover {
+    cursor: pointer;
+    transition: transform 0.2s;
+    transform: scale(1.1);
+  }
 `;
 
 export const Wrapper = styled.div`
@@ -9,12 +14,4 @@ export const Wrapper = styled.div`
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(1, 1fr);
   gap: 3%;
-  &:hover {
-    cursor: pointer;
-    ${Card} {
-      transition: transform .2s;     
-      transform: scale(1.1);
-    }    
-  }
 `;
-

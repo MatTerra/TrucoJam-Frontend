@@ -1,3 +1,4 @@
+import { Card } from "components/Game/cards";
 import React, {
   createContext,
   Dispatch,
@@ -6,7 +7,7 @@ import React, {
   useEffect,
 } from "react";
 import { api } from "services/api";
-import { Game } from "templates/RoomPage";
+import { Game, GameResult } from "templates/RoomPage";
 
 type RoomContextType = {
   game?: Game;
@@ -15,19 +16,13 @@ type RoomContextType = {
   setRound: Dispatch<Round | undefined>;
   resetGame: () => void;
 };
-
-export interface Card {
-  naipe: number;
-  rodada: number | null;
-  valor: number;
-}
-
-interface Round {
-  maos: [{ cartas: Card[]; jogador: string }];
-  may_raise: true;
+export interface Round {
+  mao_jogador?: { cartas: Card[]; jogador: string };
+  maos: { cartas: Card[]; jogador: string }[];
+  may_raise: [boolean, boolean];
   turno: number;
   valor: number;
-  vencedor: string | null;
+  vencedor: number | null;
 }
 export interface RoundResult {
   data: { partida: Round };
@@ -52,6 +47,24 @@ export const RoomProvider: React.FC = ({ children }) => {
   const resetGame = useCallback(() => {
     setGame(undefined);
   }, [setGame]);
+
+  useEffect(() => {
+    const getGame = async () => {
+      try {
+        const apiInstance = await api();
+        const thisRound = await apiInstance.get<GameResult>(
+          `/${game?.id_ || 0}`
+        );
+        if (thisRound.status === 204) {
+          return;
+        }
+        setGame(thisRound.data.data.Game);
+      } catch (e) {
+        console.log(e);
+      }
+    };
+    getGame();
+  }, [round?.vencedor, game?.id_]);
 
   useEffect(() => {
     const getRound = async () => {

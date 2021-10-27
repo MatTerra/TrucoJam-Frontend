@@ -3,8 +3,28 @@ import styled, { css } from "styled-components";
 const defaultColor = (
   active: boolean,
   status: "available" | "loading" | "unavailable"
-) =>
-  active || status === "unavailable" ? "#bc3015" : `rgba(226, 114, 114, 0.6);`;
+) => {
+  if (!active && status !== "unavailable") {
+    return "#bc3015;";
+  }
+  if (!active && status === "unavailable") {
+    return "rgba(226, 114, 114, 0.6);";
+  }
+
+  if (active && status === "unavailable") {
+    return "#bc3015;";
+  }
+
+  if (active) {
+    return "#bc3015;";
+  }
+
+  if (status === "unavailable") {
+    return "#bc3015;";
+  }
+
+  return "rgba(226, 114, 114, 0.6);";
+};
 
 export const Wrapper = styled.div<{
   active: boolean;

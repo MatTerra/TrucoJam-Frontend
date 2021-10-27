@@ -1,5 +1,5 @@
 import Room from "components/Room";
-import { useRoom } from "context/RoomContext";
+import { Round, useRoom } from "context/RoomContext";
 import useRequest from "hooks/useRequest";
 import { useEffect } from "react";
 
@@ -12,7 +12,7 @@ export interface Game {
   id_: string;
   jogadores: string[];
   last_modified_datetime: Date;
-  partidas: Array<any>;
+  partidas: Array<Round>;
   pontuacao: [number, number];
   senha: "";
   status: number;

@@ -7,7 +7,35 @@ export interface IRoomProps {
   isLoading: boolean;
 }
 const Room = ({ id, isLoading }: IRoomProps) => {
-  const { game } = useRoom();
+  const { game, round } = useRoom();
+
+  const getCurrentPlayer = (team: "A" | "B") => {
+    if (round) {
+      switch (round.turno) {
+        case 0:
+        case 1:
+          return team === "A" ? (round.turno as 0 | 1) : undefined;
+        case 2:
+        case 3:
+          return team === "B" ? ((round.turno - 2) as 0 | 1) : undefined;
+      }
+    }
+    return undefined;
+  };
+
+  const mayRaise = () => {
+    if (round) {
+      switch (round.turno) {
+        case 0:
+        case 1:
+          return round.may_raise[0]!;
+        case 2:
+        case 3:
+          return round.may_raise[1]!;
+      }
+    }
+    return false;
+  };
 
   return (
     <S.Wrapper>
@@ -15,6 +43,7 @@ const Room = ({ id, isLoading }: IRoomProps) => {
       <S.TeamA>
         <S.Span>Team A</S.Span>
         <TeamList
+          current={getCurrentPlayer("A")}
           roomId={id}
           team="A"
           isLoading={isLoading}
@@ -22,11 +51,12 @@ const Room = ({ id, isLoading }: IRoomProps) => {
         ></TeamList>
       </S.TeamA>
       <S.Game>
-        <Game roomID={id}></Game>
+        <Game roomID={id} mayRaise={mayRaise()}></Game>
       </S.Game>
       <S.TeamB>
         <S.Span>Team B</S.Span>
         <TeamList
+          current={getCurrentPlayer("B")}
           roomId={id}
           team="B"
           isLoading={isLoading}
